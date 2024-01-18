@@ -21,11 +21,9 @@ func NewHandlerReminder(r chi.Router, usecase reminder.Usecase) {
 }
 
 func (h *handlerReminder) GetTask(w http.ResponseWriter, r *http.Request) {
-	// Your implementation for creating a quote
-	w.Write([]byte("Quote created successfully"))
+
 }
 
 func (h *handlerReminder) CreateTask(w http.ResponseWriter, r *http.Request) {
-	// Your implementation for creating a quote
-	w.Write([]byte("Quote created successfully"))
+
 }
