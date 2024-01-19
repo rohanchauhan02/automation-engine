@@ -21,7 +21,7 @@ func (u *usecase) Reminder() {
 				if err != nil {
 					fmt.Printf("[ERROR][REMINDER] failed to get user details. Error: %s", err)
 				}
-				fmt.Printf("[REMINDER] Mobile no: %s\nName :%s", user.Name, user.Name)
+				fmt.Printf("[REMINDER] Mobile no: %s\nName :%s", user.PhoneNumber, user.Name)
 			}
 
 			if err != nil {

@@ -3,6 +3,8 @@ module github.com/rohanchauhan02/automation-engine
 go 1.20
 
 require (
+	github.com/DATA-DOG/go-sqlmock v1.5.2
+	github.com/smartystreets/goconvey v1.8.1
 	github.com/spf13/viper v1.18.2
 	go.uber.org/mock v0.4.0
 )
@@ -11,9 +13,12 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect
+	github.com/smarty/assertions v1.15.0 // indirect
 	golang.org/x/crypto v0.16.0 // indirect
 	golang.org/x/net v0.19.0 // indirect
 )
