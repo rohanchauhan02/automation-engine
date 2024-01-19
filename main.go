@@ -9,7 +9,7 @@ import (
 
 	reminderHandler "github.com/rohanchauhan02/automation-engine/domain/reminder/delivery/http"
 	"github.com/rohanchauhan02/automation-engine/domain/reminder/repository"
-	"github.com/rohanchauhan02/automation-engine/domain/reminder/usecase"
+	usecase "github.com/rohanchauhan02/automation-engine/domain/reminder/usecase"
 	"github.com/rohanchauhan02/automation-engine/shared/config"
 	"github.com/rohanchauhan02/automation-engine/shared/container"
 	"github.com/rohanchauhan02/automation-engine/shared/postgres"
@@ -48,10 +48,11 @@ func main() {
 	reminderRepo := repository.NewReminderRepository(postgresSession)
 	reminderUsecase := usecase.NewReminderUsecase(reminderRepo)
 	reminderHandler.NewHandlerReminder(r, reminderUsecase)
-
+	go reminderUsecase.Reminder()
 	port := conf.GetPort()
 	fmt.Printf("Starting server on port %s...\n", port)
 	if err := http.ListenAndServe(":"+port, r); err != nil {
 		fmt.Printf("Server error: %s", err.Error())
 	}
+
 }
