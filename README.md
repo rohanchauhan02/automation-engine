@@ -28,13 +28,13 @@
 * Migration Up
 
     ```cd datatbase/migrations
-        goose postgres "user=root dbname=automation_engine sslmode=disable" up
+        goose -dir . postgres "host=localhost port=5432 user=root password=root dbname=automation_engine sslmode=disable" up
     ```
 
 * Migration Down
 
     ```cd datatbase/migrations
-        goose postgres "user=root dbname=automation_engine sslmode=disable" down
+        goose -dir . postgres "host=localhost port=5432 user=root password=root dbname=automation_engine sslmode=disable" down
     ```
 
 ## Usage
