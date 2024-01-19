@@ -42,7 +42,7 @@
 1. Manual run
 
     ```shell
-        go run app/main.go
+        go run main.go
     ```
 
 ## TODO
