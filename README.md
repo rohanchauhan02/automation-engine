@@ -5,11 +5,13 @@
 * Install go v1.20 or above to use go modules
 
 * Make vendored copy of depedencies
+
     ```shell
         go mod vendor
     ```
 
 * Copy app.config.sample yml into local environment. For example:
+
     ```shell
         cp app.config.sample.yml app.config.local.yml
     ```
@@ -18,34 +20,42 @@
 * Make sure your redis and mysql database is ready
 
 * Install `goose` for db migrations :
+
     ```shell
         go get -u github.com/pressly/goose/cmd/goose
     ```
 
 * Migration Up
-    ```
-        cd datatbase/migrations
+
+    ```cd datatbase/migrations
         goose postgres "user=root dbname=automation_engine sslmode=disable" up
     ```
+
 * Migration Down
+
     ```cd datatbase/migrations
         goose postgres "user=root dbname=automation_engine sslmode=disable" down
     ```
 
 ## Usage
+
 1. Manual run
+
     ```shell
         go run app/main.go
     ```
 
 ## TODO
-- [v] Initiate project
-- [ ] Initiate postgresSQL as data store
-- [ ] Initiate redis as cache repository
-- [ ] Integrate with prometheus, grafana, elastic
-- [ ] Unit test and integration test
+
+* [v] Initiate project
+
+* [ ] Initiate postgresSQL as data store
+* [ ] Initiate redis as cache repository
+* [ ] Integrate with prometheus, grafana, elastic
+* [ ] Unit test and integration test
 
 ## Directory Structure
+
 ```tree
 .
 |-- main execution file
@@ -62,3 +72,9 @@
 |-- shared is a directory consist of shared package for the codebase
 |-- app.config.yml is a file containing the env value for the codebase
 `-- README.md is a codebase documentation
+```
+
+### References
+
+* Goose: <https://github.com/pressly/goose>
+* MockGen <go.uber.org/mock/gomock>
