@@ -1,17 +1,24 @@
+POSTGRES_CONTAINER_NAME=postgres12
+DB_NAME=automation_engine
+DB_USER=root
+DB_PASSWORD=root
+DB_PORT=5432
+MIGRATION_PATH=database/migration
+
 postgres:
-	docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -d postgres:12-alpine
+	docker run --name $(POSTGRES_CONTAINER_NAME) -p $(DB_PORT):$(DB_PORT) -e POSTGRES_USER=$(DB_USER) -e POSTGRES_PASSWORD=$(DB_PASSWORD) -d postgres:12-alpine
 
 createdb:
-	docker exec -it postgres12 createdb --username=root --owner=root automation_engine
+	docker exec -it $(POSTGRES_CONTAINER_NAME) createdb --username=$(DB_USER) --owner=$(DB_USER) $(DB_NAME)
 
 dropdb:
-	docker exec -it postgres12 dropdb automation_engine
+	docker exec -it $(POSTGRES_CONTAINER_NAME) dropdb $(DB_NAME)
 
 migrateup:
-	migrate -path db/migration -database "localhost://root:root@localhost:5432/automation_engine?sslmode=disable" -verbose up
+	migrate -path $(MIGRATION_PATH) -database "postgres://$(DB_USER):$(DB_PASSWORD)@localhost:$(DB_PORT)/$(DB_NAME)?sslmode=disable" -verbose up
 
 migratedown:
-	migrate -path db/migration -database "localhost://root:root@localhost:5432/automation_engine?sslmode=disable" -verbose down
+	migrate -path $(MIGRATION_PATH) -database "postgres://$(DB_USER):$(DB_PASSWORD)@localhost:$(DB_PORT)/$(DB_NAME)?sslmode=disable" -verbose down
 
 test:
 	go test -v -cover ./...
@@ -19,4 +26,4 @@ test:
 server:
 	go run main.go
 
-.PHONY postgres createdb dropdb migratedown migrateup server test
+.PHONY: postgres createdb dropdb migrateup migratedown test server
