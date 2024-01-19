@@ -1,8 +1,58 @@
 {
-    "task":[
-
-    ],
-    "user":[
-
-    ]
+  "task_request": [
+    {
+      "title": "Get Up",
+      "description": "Hey Rohan, get up now.",
+      "priority": "HIGHEST",
+      "due_date": "2024-01-19T15:38:49Z"
+    },
+    {
+      "title": "Get Up",
+      "description": "Hey Rohan, get up now.",
+      "priority": "HIGHEST",
+      "due_date": "2024-01-19T15:38:49Z"
+    }
+  ],
+  "task": [
+    {
+      "id": 1,
+      "title": "Get Up",
+      "description": "Hey Rohan, get up now.",
+      "priority": "HIGHEST",
+      "user_id": 1,
+      "due_date": "2024-01-19T15:38:49Z",
+      "created_at": "2024-01-19T15:38:49Z",
+      "updated_at": "2024-01-19T15:38:49Z"
+    },
+    {
+      "id": 1,
+      "title": "Get Up",
+      "description": "Hey Rohan, get up now.",
+      "priority": "HIGHEST",
+      "user_id": 1,
+      "due_date": "2024-01-19T15:38:49Z",
+      "created_at": "2024-01-19T15:38:49Z",
+      "updated_at": "2024-01-19T15:38:49Z"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Rohan",
+      "email": "singhrohankumar7@gmail.com",
+      "phone_number": "123456789",
+      "address": "New Delhi, India",
+      "created_at": "2024-01-19T15:38:49Z",
+      "updated_at": "2024-01-19T15:38:49Z"
+    },
+    {
+      "id": 1,
+      "name": "Rohan",
+      "email": "singhrohankumar7@gmail.com",
+      "phone_number": "123456789",
+      "address": "New Delhi, India",
+      "created_at": "2024-01-19T15:38:49Z",
+      "updated_at": "2024-01-19T15:38:49Z"
+    }
+  ]
 }

@@ -7,8 +7,8 @@ import (
 )
 
 func (u *usecase) Reminder() {
-	// Run reminder every 15 minutes
-	const interval = 1
+	// Run reminder every 5 minutes
+	const interval = 5
 	ticker := time.NewTicker(interval * time.Minute)
 
 	for {

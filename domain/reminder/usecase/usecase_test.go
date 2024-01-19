@@ -22,8 +22,9 @@ const (
 )
 
 type TestReminder struct {
-	Task []models.Task `json:"task"`
-	User []models.User `json:"user"`
+	Task        []models.Task        `json:"task"`
+	User        []models.User        `json:"user"`
+	TaskRequest []models.TaskRequest `json:"task_request"`
 }
 
 func Test_usecase_CreateTask(t *testing.T) {
@@ -39,8 +40,8 @@ func Test_usecase_CreateTask(t *testing.T) {
 	}
 	defer gdb.Close()
 
-	reminderTestData := TestReminder{}
-	util.ReadJSON("../../../test_files/reminder_test_data.json", &reminderTestData)
+	reminderTestData := &TestReminder{}
+	util.ReadJSON("../../../test_files/reminder_test_data.json", reminderTestData)
 	type args struct {
 		userIDStr string
 		payload   models.TaskRequest
@@ -56,24 +57,22 @@ func Test_usecase_CreateTask(t *testing.T) {
 		{
 			name: "Test Case 1: Valid reminder",
 			prepFunc: func(mockReminderRepo *mock_reminder.MockRepository) {
-				task := reminderTestData.Task[0]
-				user := reminderTestData.User[0]
-				mockReminderRepo.EXPECT().InsertTask(gomock.Any()).AnyTimes().Return(gomock.Any())
+				taskResp := reminderTestData.Task[0]
+				taskRequest := reminderTestData.TaskRequest[1]
+				task := models.Task{
+					Title:       taskRequest.Title,
+					Description: taskRequest.Description,
+					Priority:    taskRequest.Priority,
+					UserID:      taskResp.UserID,
+					DueDate:     taskResp.DueDate,
+				}
+				mockReminderRepo.EXPECT().InsertTask(&task).Return(&taskResp, nil)
 			},
 			args: args{
 				userIDStr: "1",
-				payload: struct {
-					Title       string `json:"title"`
-					Description string `json:"description"`
-					Priority    string `json:"priority"`
-					DueDate     string `json:"due_date"`
-				}{
-					Title:       "",
-					Description: "",
-					Priority:    "",
-					DueDate:     "",
-				},
+				payload:   reminderTestData.TaskRequest[1],
 			},
+			want: &reminderTestData.Task[0] ,
 			wantErr: nil,
 		},
 	}

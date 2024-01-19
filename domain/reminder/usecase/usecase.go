@@ -28,9 +28,9 @@ func (u *usecase) CreateTask(userIDStr string, payload models.TaskRequest) (*mod
 
 	dueDate, err := time.Parse(time.RFC3339, payload.DueDate)
 	if err != nil {
+		fmt.Printf("[ERROR] failed to parse time. Error: %s", err)
 		return nil, err
 	}
-
 	task := models.Task{
 		Title:       payload.Title,
 		Description: payload.Description,
@@ -38,10 +38,11 @@ func (u *usecase) CreateTask(userIDStr string, payload models.TaskRequest) (*mod
 		DueDate:     dueDate,
 		Priority:    payload.Priority,
 	}
-
 	resp, err := u.repository.InsertTask(&task)
 
-	fmt.Println(resp, err)
-
-	return nil, nil
+	if err != nil {
+		fmt.Printf("[ERROR][CreateTask][RESPONSE] failed to insert task. Error: %s", err)
+		return nil, err
+	}
+	return resp, nil
 }
