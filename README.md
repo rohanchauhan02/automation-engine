@@ -13,6 +13,7 @@
     ```shell
         cp app.config.sample.yml app.config.local.yml
     ```
+
 * Fill the yml values
 * Make sure your redis and mysql database is ready
 
@@ -43,11 +44,6 @@
 - [ ] Initiate redis as cache repository
 - [ ] Integrate with prometheus, grafana, elastic
 - [ ] Unit test and integration test
-
-2. Bash script
-   ```shell
-        bash run.sh
-    ```
 
 ## Directory Structure
 ```tree
