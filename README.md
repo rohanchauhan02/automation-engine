@@ -50,8 +50,6 @@
 * [v] Initiate project
 
 * [ ] Initiate postgresSQL as data store
-* [ ] Initiate redis as cache repository
-* [ ] Integrate with prometheus, grafana, elastic
 * [ ] Unit test and integration test
 
 ## Directory Structure
