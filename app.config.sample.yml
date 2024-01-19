@@ -1,0 +1,8 @@
+PORT: 11001
+
+# DB Config
+DATABASE_NAME: automation_engine
+DATABASE_HOST: localhost
+DATABASE_PORT: 5432
+DATABASE_USER: root
+DATABASE_PASSWORD: root
