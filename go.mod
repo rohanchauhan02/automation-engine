@@ -2,7 +2,10 @@ module github.com/rohanchauhan02/automation-engine
 
 go 1.20
 
-require github.com/spf13/viper v1.18.2
+require (
+	github.com/spf13/viper v1.18.2
+	go.uber.org/mock v0.4.0
+)
 
 require (
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
